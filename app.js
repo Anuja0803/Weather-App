@@ -7,7 +7,7 @@ const weatherApi = {
 const searchInputBox = document.getElementById('input-box');
 searchInputBox.addEventListener('keypress', function (event) {
     if (event.keyCode == 13) {
-        console.log(searchInputBox.value);
+        //console.log(searchInputBox.value);
         getWeatherReport(searchInputBox.value);
     }
 })
@@ -20,7 +20,7 @@ function getWeatherReport(city){
 }
 
 function showWeatherReport(weather){
-    console.log(weather)
+    //console.log(weather)
 
     let city = document.getElementById('city');
     city.innerText=`${weather.name} , ${weather.sys.country}`;
@@ -29,7 +29,7 @@ function showWeatherReport(weather){
     temperature.innerHTML = `${Math.round(weather.main.temp)}&deg;C`;
 
     let minMaxTemp = document.getElementById('min-max');
-    minMaxTemp.innerHTML = `${Math.floor(weather.main.temp_min)}&deg;C (min)/${Math.floor(weather.main.temp_max)}&deg;C (max)`;
+    minMaxTemp.innerHTML = `${Math.floor(weather.main.temp_min)}&deg;C (min) / ${Math.floor(weather.main.temp_max)}&deg;C (max)`;
 
     let weatherType = document.getElementById('weather');
     weatherType.innerText = `${weather.weather[0].main}`;
@@ -58,6 +58,9 @@ function showWeatherReport(weather){
     }
     else if(weatherType.textContent == 'Mist'){
         document.body.style.backgroundImage = "url('image/mist.jpg')";
+    }
+    else if(weatherType.textContent == 'Thunderstorm'){
+        document.body.style.backgroundImage = "url('image/thunderstorm.jpg')";
     }
     else{
         document.body.style.backgroundImage = "url('image/sunny.jpg')";
